@@ -112,6 +112,15 @@ public class MainActivity extends AppCompatActivity {
                                 })
                                 .show();
                         break;
+                    case Status.RENEW_FAILED:
+                        Snackbar.make(fab, result.getStatusText(), Snackbar.LENGTH_INDEFINITE)
+                                .setAction("Send Log", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        LoggerUtil.launchSendLogWithAttachment(v.getContext());
+                                    }
+                                }).show();
+                        break;
                     default:
                         Snackbar.make(fab, result.getStatusText(), Snackbar.LENGTH_LONG).show();
                         break;
@@ -127,12 +136,24 @@ public class MainActivity extends AppCompatActivity {
             public void run(){
                 PreferenceHelper preferences = PreferenceHelper.getInstance(MainActivity.this);
 
+                int prevVersionCode = preferences.getPreviousVersionCode();
                 boolean credentialsEntered = preferences.credentialsEntered();
 
-                if (!credentialsEntered) {
-                    Intent i = new Intent(MainActivity.this, IntroActivity.class);
+                Intent i = new Intent(MainActivity.this, IntroActivity.class);
+                if (prevVersionCode < BuildConfig.VERSION_CODE && credentialsEntered) {
+                    i.putExtra(IntroActivity.EXTRA_TITLE, getString(R.string.app_welcome_upgrade));
+                    i.putExtra(IntroActivity.EXTRA_DESCRIPTION, getString(R.string.app_welcome_upgrade_description));
+                    preferences.setPreviousVersionCode(BuildConfig.VERSION_CODE);
                     startActivity(i);
                 }
+
+                if (!credentialsEntered) {
+                    i.putExtra(IntroActivity.EXTRA_TITLE, getString(R.string.app_welcome));
+                    i.putExtra(IntroActivity.EXTRA_DESCRIPTION,getString(R.string.app_welcome_description));
+                    preferences.setPreviousVersionCode(BuildConfig.VERSION_CODE);
+                    startActivity(i);
+                }
+
             }
         });
 

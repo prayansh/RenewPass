@@ -1,5 +1,6 @@
 package ca.alexland.renewpass;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -28,6 +29,8 @@ import ca.alexland.renewpass.utils.AlarmUtil;
 import ca.alexland.renewpass.utils.PreferenceHelper;
 
 public class IntroActivity extends AppIntro2 {
+    public static final String EXTRA_TITLE = "Title";
+    public static final String EXTRA_DESCRIPTION = "Description";
 
     @Override
     public void onBackPressed() {
@@ -36,9 +39,12 @@ public class IntroActivity extends AppIntro2 {
 
     @Override
     public void init(Bundle savedInstanceState) {
+        Intent intent = getIntent();
+        String title = intent.getStringExtra(EXTRA_TITLE);
+        String description = intent.getStringExtra(EXTRA_DESCRIPTION);
 
-        addSlide(AppIntroFragment.newInstance(getString(R.string.app_welcome),
-                getString(R.string.app_description),
+        addSlide(AppIntroFragment.newInstance(title,
+                description,
                 R.drawable.ic_autorenew,
                 ContextCompat.getColor(this, R.color.colorPrimary)));
 

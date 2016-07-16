@@ -13,7 +13,7 @@
     <string name="available_notification_text">You\'re all set for the next month</string>
     <string name="unavailable_notification_short_title">UPass Auto-Renew Error</string>
     <string name="unavailable_notification_title">There was an error trying to auto-renew your UPass</string>
-    <string name="unavailable_notification_text">We\'ll keep trying to renew it in the background</string>
+    <string name="unavailable_notification_text">We\'ll try to renew it again tomorrow</string>
     <string name="preference_header_autorenew">Automatic Renewal</string>
     <string name="preference_autorenewdate_title">Renewal Date</string>
     <string name="preference_autorenewdate_description">The day of the month to renew your UPass</string>
@@ -22,7 +22,7 @@
     <string name="preference_autorenewenabled_title">Automatic Renewal</string>
     <string name="preference_autorenewenabled_description" />
     <string name="message_autorenew_disabled">You have disabled automatic renewal</string>
-    <string name="message_autorenew_enabled">You will be updated on the %1$sth of every month</string>
+    <string name="message_autorenew_enabled">You will be updated on the %1$sth of every month. The next update is scheduled for %2$s</string>
     <string name="preference_dialog_button_positive">Set</string>
     <string name="preference_dialog_button_negative">Cancel</string>
     <string name="title_activity_intro">IntroActivity</string>
@@ -30,7 +30,7 @@
     <string name="password_hint">Enter your password</string>
     <string name="enter_credentials_prompt">To get started, enter your credentials</string>
     <string name="provider_hint">Select your school</string>
-    <string name="app_description">Renew your U-pass with the press of a button</string>
+    <string name="app_welcome_description">Renew your U-pass with the press of a button</string>
     <string name="app_welcome">Welcome to RenewPass</string>
     <string name="error_school_selection">Please select a school</string>
     <string name="school_spinner_default">Select your school...</string>
@@ -45,13 +45,15 @@
    <b>Evan Chisholm</b> - Developer, Thane<br>
    <b>Emre Erhan</b> - Developer, Dishwasher<br><br>
    <b>Huge thanks to our contributors:</b> Prayansh Srivastava, Eugene Shen<br><br>
-   Special thanks to: <b>Alfred Sin</b>, <b>Akshiv Bansal</b> and <b>Tina Ly</b> for testing.<br><br>RenewPass was heavily inspired by <b>Alireza Alidousti\'s</b> upassbc library.]]>
+   <b>Special thanks to testers:</b> Alfred Sin, Akshiv Bansal, Tina Ly, Umesh Dinkar, Manny Sangha, Stuart Harvey, Jacob Zhou and James Kao.<br><br>RenewPass was heavily inspired by <b>Alireza Alidousti\'s</b> upassbc library.]]>
     </string>
     <string name="privacy_notice">Your credentials are stored locally, only accessible by RenewPass, and your password is encrypted by default.</string>
     <string name="preference_licenses">Licenses</string>
     <string name="checkbox_show_password">Show password</string>
     <string name="preference_debug">Send debug log</string>
     <string name="school_select">Select your school</string>
+    <string name="app_welcome_upgrade">Welcome back to RenewPass!</string>
+    <string name="app_welcome_upgrade_description">We\'ve changed a few things around behind the scenes, so we need you to re-enter your credentials.</string>
 
     <!--Preference keys-->
     <!--IMPORTANT: These strings CANNOT CHANGE. Otherwise, preferences will be lost-->
@@ -67,6 +69,9 @@
     <string name="preference_key_credits">Credits</string>
     <string name="preference_key_licenses">Licenses</string>
     <string name="preference_key_debug">Debug</string>
+    <string name="preference_key_keys">KeysExist</string>
+    <string name="preference_key_encrypted">PasswordEncrypted</string>
+    <string name="preference_key_prevversion">PreviousVersion</string>
     
     <!-- Preference default values-->
     <string name="preference_value_notification_default_time">00:00</string>
@@ -76,8 +81,9 @@
         <item>SFU</item>
         <item>UBC</item>
         <item>BCIT</item>
-        <item>Cap U</item>
-        <item>Langara</item>
+        <!-- TODO: Un-comment Cap U and Langara when they are fixed-->
+        <!--<item>Cap U</item>-->
+        <!--<item>Langara</item>-->
         <item>VCC</item>
         <item>NVIT</item>
         <item>Douglas</item>
